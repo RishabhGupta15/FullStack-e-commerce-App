@@ -16,7 +16,7 @@ public class ProductServiceImpl implements ProductServiceInterface {
     private ProductRepository productRepository;
 
     public List<Product> getAllProducts(){
-        return productRepository.findAll();
+        return (List<Product>) productRepository.findAll();
     }
 
     public void addNewProduct(Product product){
@@ -39,4 +39,11 @@ public class ProductServiceImpl implements ProductServiceInterface {
 
         productRepository.save(product);
     }
+
+    public void deleteProductByProductId(String pid) {
+        Product product = productRepository.findBypID(pid);
+        if(product == null) throw new ProductNotPresentException(pid);
+        productRepository.delete(product);
+    }
+
 }

@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("api/products")
 public class ProductController {
@@ -21,7 +23,7 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity addNewProduct(@RequestBody Product newProduct){
+    public ResponseEntity addNewProduct(@RequestBody @Valid Product newProduct){
         productServiceImpl.addNewProduct(newProduct);
         return new ResponseEntity(newProduct, HttpStatus.CREATED);
     }
@@ -32,8 +34,14 @@ public class ProductController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity updateProductDetails(@RequestBody ProductResponse productResponse){
+    public ResponseEntity updateProductDetails(@RequestBody @Valid ProductResponse productResponse){
         productServiceImpl.updateProduct(productResponse);
         return new ResponseEntity(productServiceImpl.findProductById(productResponse.getPId()), HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("/{pid}")
+    public ResponseEntity deleteProductByProductId(@PathVariable("pid") String pid){
+        productServiceImpl.deleteProductByProductId(pid);
+        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 }

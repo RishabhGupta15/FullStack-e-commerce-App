@@ -4,4 +4,8 @@ public class ProductNotPresentException extends RuntimeException{
     public ProductNotPresentException(String pId){
         super("product with id- " +pId+" is not present");
     }
+
+    public ProductNotPresentException(){
+        super("product not present");
+    }
 }
