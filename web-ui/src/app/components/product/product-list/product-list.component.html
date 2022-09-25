@@ -1,8 +1,16 @@
-<table>
-    <tr class="list-group list-group-horizontal">
-        <td class="list-group-item"> Product Name</td>
-        <td class="list-group-item"> Product Description</td>
-        <td class="list-group-item"> Rate</td>
-        <td class="list-group-item"> Stock</td>
-    </tr>
-</table>
+
+    <ul class="list-group list-group-horizontal" id="list-heading">
+        <li class="list-group-item"> Product Name</li>
+        <li class="list-group-item"> Product Description</li>
+        <li class="list-group-item"> Rate</li>
+        <li class="list-group-item"> Stock</li>
+    </ul>
+    
+    <app-product *ngFor="let product of productList"
+        [productName]="product.productName" 
+        [productDescription]="product.productDescription"
+        [price]="product.productPrice"
+        [stock]="product.stock"
+        >
+    </app-product>
+    

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/common/product';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProductResponseModel } from 'src/app/common/product-response.model';
 
 @Component({
   selector: 'app-product-list',
@@ -8,7 +8,7 @@ import { Product } from 'src/app/common/product';
 })
 export class ProductListComponent implements OnInit {
 
-  productList: Product[] = [];
+  @Input() productList: ProductResponseModel[] = [];
 
   constructor() { }
 
