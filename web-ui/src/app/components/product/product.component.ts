@@ -9,6 +9,7 @@ export class ProductComponent implements OnInit {
 
   @Input() productName: string="";
   @Input() productDescription: string="";
+  // @Input() pid: string="";
   @Input() price: number=0;
   @Input() stock: number=0;
  

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductResponseModel } from 'src/app/common/product-response.model';
+import { ProductService } from 'src/app/services/product.service';
+import { ProductPostModel } from 'src/app/common/product-post.model';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -7,18 +9,24 @@ import { ProductResponseModel } from 'src/app/common/product-response.model';
 })
 export class ProductFormComponent implements OnInit {
 
-  newProduct: ProductResponseModel[] = [];
+  newProduct: ProductPostModel[] = [];
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
   }
 
   addProduct(pid: HTMLInputElement,product_name: HTMLInputElement, product_description: HTMLInputElement, product_price: HTMLInputElement, product_stock: HTMLInputElement): boolean{
-    let productResponse: ProductResponseModel = new ProductResponseModel(pid.value, product_name.value, product_description.value, parseInt(product_price.value), parseInt(product_stock.value));
+    let productResponse: ProductPostModel = new ProductPostModel(pid.value, product_name.value, product_description.value, parseFloat(product_price.value), parseFloat(product_stock.value));
     this.newProduct.push(productResponse);
     console.log(this.newProduct);
-    return false;
+    this.productService.saveProduct(productResponse).subscribe(
+      data => {
+        console.log("------");
+        console.log(data);
+      }
+    );
+    return true;
   }
 
 }
