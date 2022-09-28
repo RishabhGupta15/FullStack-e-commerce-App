@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ProductResponseModel } from 'src/app/common/product-response.model';
+import { ProductService } from 'src/app/services/product.service';
+import { ProductPostModel } from 'src/app/common/product-post.model';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -7,17 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductFormComponent implements OnInit {
 
-  constructor() { }
+  newProduct: ProductPostModel[] = [];
+
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  addProduct(product_name: HTMLInputElement, product_description: HTMLInputElement, product_price: HTMLInputElement, product_stock: HTMLInputElement): boolean{
-    console.log(`
-      called add product
-      ${product_name.value} ${product_description.value} ${product_price.value} ${product_stock.value}
-    `);
-    return false;
+  addProduct(pid: HTMLInputElement,product_name: HTMLInputElement, product_description: HTMLInputElement, product_price: HTMLInputElement, product_stock: HTMLInputElement): boolean{
+    let productResponse: ProductPostModel = new ProductPostModel(pid.value, product_name.value, product_description.value, parseFloat(product_price.value), parseFloat(product_stock.value));
+    this.newProduct.push(productResponse);
+    console.log(this.newProduct);
+    this.productService.saveProduct(productResponse).subscribe(
+      data => {
+        console.log("------");
+        console.log(data);
+      }
+    );
+    this.loadProductList();
+    return true;
+  }
+
+  loadProductList(){
+    this.router.navigate(["/products"]);
   }
 
 }
