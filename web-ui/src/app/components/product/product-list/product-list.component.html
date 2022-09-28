@@ -1,6 +1,7 @@
  
     <div>
         <app-product *ngFor="let product of productList"
+            [pid]="product.pid"
             [productName]="product.productName"
             [productDescription]="product.productDescription"
             [price]="product.productPrice"

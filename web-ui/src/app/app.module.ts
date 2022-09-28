@@ -9,11 +9,13 @@ import { ProductListComponent } from './components/product/product-list/product-
 import { ProductService } from './services/product.service';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "products", pathMatch: "full"},
   {path: "add", component: ProductFormComponent},
-  {path: "products", component: ProductListComponent}
+  {path: "products", component: ProductListComponent},
+  {path: "update", component: ProductUpdateComponent}
 ]
 
 @NgModule({
@@ -22,7 +24,8 @@ const routes: Routes = [
     ProductComponent,
     ProductListComponent,
     ProductFormComponent,
-    NavBarComponent
+    NavBarComponent,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule,
