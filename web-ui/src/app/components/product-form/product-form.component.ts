@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductResponseModel } from 'src/app/common/product-response.model';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductPostModel } from 'src/app/common/product-post.model';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -11,7 +12,7 @@ export class ProductFormComponent implements OnInit {
 
   newProduct: ProductPostModel[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +27,12 @@ export class ProductFormComponent implements OnInit {
         console.log(data);
       }
     );
+    this.loadProductList();
     return true;
+  }
+
+  loadProductList(){
+    this.router.navigate(["/products"]);
   }
 
 }
