@@ -21,4 +21,12 @@ export class ProductService {
   saveProduct(newProduct: ProductPostModel) {
     return this.httpClient.post(`${this.baseUrl}/add`, newProduct);
   }
+
+  updateProduct(updatedProduct: ProductPostModel){
+    return this.httpClient.put(`${this.baseUrl}/update`, updatedProduct);
+  }
+
+  deleteProduct(pid: string){
+    return this.httpClient.delete(`${this.baseUrl}/${pid}`);
+  }
 }
