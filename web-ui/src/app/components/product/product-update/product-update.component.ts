@@ -18,7 +18,7 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   updateProduct(pid: HTMLInputElement,product_name: HTMLInputElement, product_description: HTMLInputElement, product_price: HTMLInputElement, product_stock: HTMLInputElement): boolean{
-    let productResponse: ProductPostModel = new ProductPostModel(pid.value, product_name.value, product_description.value, parseFloat(product_price.value), parseFloat(product_stock.value));
+    let productResponse: ProductPostModel = new ProductPostModel(pid.value, product_name.value, product_description.value, parseFloat(product_price.value), parseInt(product_stock.value));
     this.productService.updateProduct(productResponse).subscribe(
       data => {
         console.log("------");

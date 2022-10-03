@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductServiceInterface {
         product.setProductName(newProductDetails.getProductName());
         product.setProductDescription(newProductDetails.getProductDescription());
         product.setPrice(newProductDetails.getPrice());
-        product.setStockPresent(newProductDetails.getStock());
+        product.setStockPresent(newProductDetails.getStockPresent());
 
         productRepository.save(product);
     }

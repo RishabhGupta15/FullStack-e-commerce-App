@@ -10,5 +10,5 @@ public class ProductResponse {
     private String productName;
     private String productDescription;
     private double price;
-    private int stock;
+    private int stockPresent;
 }
