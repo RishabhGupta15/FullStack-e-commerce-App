@@ -1,0 +1,13 @@
+server:
+  port: 9090
+
+user-service:
+  url: localhost:8081
+
+product-service:
+  url: localhost:8080
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
