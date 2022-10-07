@@ -10,9 +10,11 @@ import { ProductService } from './services/product.service';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: "products", pathMatch: "full"},
+  {path: "", redirectTo: "login", pathMatch: "full"},
+  {path: "login", component: LoginComponent},
   {path: "add", component: ProductFormComponent},
   {path: "products", component: ProductListComponent},
   {path: "update", component: ProductUpdateComponent}
@@ -25,7 +27,8 @@ const routes: Routes = [
     ProductListComponent,
     ProductFormComponent,
     NavBarComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
