@@ -3,6 +3,7 @@ import { LoginSessionService } from 'src/app/services/util/login-session.service
 import { UserService } from 'src/app/services/user.service';
 import { UserResponseModel } from 'src/app/common/user-response.model';
 import { Router } from '@angular/router';
+import { UserLoginDetails } from 'src/app/common/user-session-details';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,8 @@ export class LoginComponent implements OnInit {
     );
 
     this.loadProductList();
+    UserLoginDetails.USERNAME = username.value;
+    console.log(UserLoginDetails.USERNAME);
   }
 
   loadProductList(){

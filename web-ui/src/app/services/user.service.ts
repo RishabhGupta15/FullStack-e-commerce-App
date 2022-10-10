@@ -7,11 +7,11 @@ import { UserResponseModel } from '../common/user-response.model';
 })
 export class UserService {
 
-  private baseUrl = "http:localhost:9090/v2/api/user";
+  private baseUrl = "http://localhost:9090/v2/api/user";
 
   constructor(private httpClient: HttpClient) { }
 
   getLoginUser(loginDetails: UserResponseModel){
-    return this.httpClient.get<User>(`${this.baseUrl}/login`);
+    return this.httpClient.post<User>(`${this.baseUrl}/login`, loginDetails);
   }
 }

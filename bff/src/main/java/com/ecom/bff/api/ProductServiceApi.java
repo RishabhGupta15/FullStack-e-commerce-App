@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("v2/api/product")
+@CrossOrigin(value = "*")
 public class ProductServiceApi {
 
     @Autowired
