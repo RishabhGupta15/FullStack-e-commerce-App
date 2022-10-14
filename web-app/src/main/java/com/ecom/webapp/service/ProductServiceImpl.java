@@ -19,8 +19,8 @@ public class ProductServiceImpl implements ProductServiceInterface {
         return (List<Product>) productRepository.findAll();
     }
 
-    public void addNewProduct(Product product){
-        productRepository.save(product);
+    public Product addNewProduct(Product product){
+        return productRepository.save(product);
     }
 
     public Product findProductById(String id)  {
